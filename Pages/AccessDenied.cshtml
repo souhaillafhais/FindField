@@ -1,0 +1,13 @@
+﻿@page
+@model GestionTerrains.Pages.AccessDeniedModel
+@{
+    ViewData["Title"] = "Accès Refusé";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="padding-top: 100px; min-height: 100vh;">
+    <div style="text-align: center;">
+        <h1 class="text-danger">Accès Refusé</h1>
+        <p>Vous n'avez pas les autorisations nécessaires pour accéder à cette page.</p>
+        <a asp-page="/Index" class="btn btn-primary">Retour à l'accueil</a>
+    </div>
+</div>

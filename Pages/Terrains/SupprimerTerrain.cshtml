@@ -1,0 +1,43 @@
+﻿@page
+@model GestionTerrains.Pages.Terrains.SupprimerTerrainModel
+
+@{
+    ViewData["Title"] = "SupprimerTerrain";
+}
+<div class="d-flex justify-content-center align-items-center" style="padding-top: 100px; min-height: 100vh;">
+    <div style="width: 600px;">
+        <h3 class="text-center">Tu veux supprimer @Model.Terrain.Nom ?</h3>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Terrain.Nom)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Terrain.Nom)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Terrain.Type)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Terrain.Type)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Terrain.Disponible)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Terrain.Disponible)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Terrain.PrixParHeure)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Terrain.PrixParHeure)
+            </dd>
+        </dl>
+        <form method="post" class="text-center">
+            <input type="hidden" asp-for="Terrain.Id" />
+            <input type="submit" value="Supprimer" class="btn btn-outline-danger" />
+            <a asp-page="./ListeTerrain" class="btn btn-info">Retourner à la liste des terrains</a>
+        </form>
+    </div>
+</div>

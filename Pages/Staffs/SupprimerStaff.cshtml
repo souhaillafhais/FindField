@@ -1,0 +1,43 @@
+﻿@page
+@model GestionTerrains.Pages.Staffs.SupprimerStaffModel
+
+@{
+    ViewData["Title"] = "SupprimerStaff";
+}
+<div class="d-flex justify-content-center align-items-center" style="padding-top: 100px; min-height: 100vh;">
+    <div style="width: 600px;">
+        <h3 class="text-center">Tu veux Supprimer @Model.Staff.Prenom ?</h3>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Staff.Nom)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Staff.Nom)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Staff.Prenom)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Staff.Prenom)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Staff.Telephone)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Staff.Telephone)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Staff.Role)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Staff.Role)
+            </dd>
+        </dl>
+        <form method="post" class="text-center">
+            <input type="hidden" asp-for="Staff.Id" />
+            <input type="submit" value="Supprimer" class="btn btn-outline-danger" />
+            <a asp-page="./listeStaff" class="btn btn-info">Retourner à la liste du Personnel</a>
+        </form>
+    </div>
+</div>

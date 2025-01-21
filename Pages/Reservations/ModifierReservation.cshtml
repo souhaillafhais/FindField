@@ -1,0 +1,84 @@
+﻿@page
+@model GestionTerrains.Pages.Reservations.ModifierReservationModel
+
+@{
+    ViewData["Title"] = "Modifier Réservation";
+}
+<div class="d-flex justify-content-center align-items-center" style="padding-top: 100px; min-height: 100vh;">
+    <div style="width: 500px;">
+        <h1 class="text-center">Modifier La Réservation de @Model.Reservation.NomClient</h1>
+
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Reservation.Id" />
+
+                    <!-- Nom du client -->
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Reservation.NomClient" class="control-label"></label>
+                        <input asp-for="Reservation.NomClient" class="form-control" />
+                        <span asp-validation-for="Reservation.NomClient" class="text-danger"></span>
+                    </div>
+
+                    <!-- Téléphone -->
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Reservation.Telephone" class="control-label"></label>
+                        <input asp-for="Reservation.Telephone" class="form-control" />
+                        <span asp-validation-for="Reservation.Telephone" class="text-danger"></span>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Reservation.Date" class="control-label"></label>
+                        <input asp-for="Reservation.Date" class="form-control" />
+                        <span asp-validation-for="Reservation.Date" class="text-danger"></span>
+                    </div>
+
+                    <!-- Heure de début -->
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Reservation.HeureDebut" class="control-label"></label>
+                        <input asp-for="Reservation.HeureDebut" class="form-control" />
+                        <span asp-validation-for="Reservation.HeureDebut" class="text-danger"></span>
+                    </div>
+
+                    <!-- Heure de fin -->
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Reservation.HeureFin" class="control-label"></label>
+                        <input asp-for="Reservation.HeureFin" class="form-control" />
+                        <span asp-validation-for="Reservation.HeureFin" class="text-danger"></span>
+                    </div>
+
+                    <!-- Terrain -->
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label for="TerrainId" class="control-label">Terrain</label>
+                        <select asp-for="Reservation.TerrainId" class="form-control" asp-items="Model.TerrainOptions"></select>
+                        <span asp-validation-for="Reservation.TerrainId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" value="Enregistrer" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <a asp-page="./ListeReservation" class="btn btn-info">Retourner à la liste des Réservations</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+     }
+}
+

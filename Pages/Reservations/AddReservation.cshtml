@@ -1,0 +1,69 @@
+﻿@page "{id:int?}"
+@model GestionTerrains.Pages.Reservations.AddReservationModel
+
+@{
+    ViewData["Title"] = "Ajouter une Réservation";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="padding-top: 100px; min-height: 100vh;">
+    <div style="width: 500px; background-image: url('images /bg_3.jpg');">
+        <h1 class="text-center">@ViewData["Title"]</h1>
+        <hr />
+
+        <form method="post" class="mt-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Reservation.NomClient" class="control-label"></label>
+                <input asp-for="Reservation.NomClient" class="form-control" />
+                <span asp-validation-for="Reservation.NomClient" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Reservation.Telephone" class="control-label"></label>
+                <input asp-for="Reservation.Telephone" class="form-control" />
+                <span asp-validation-for="Reservation.Telephone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Reservation.Date" class="control-label"></label>
+                <input asp-for="Reservation.Date" id="datepicker" class="form-control" />
+                <span asp-validation-for="Reservation.Date" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Reservation.TerrainId" class="control-label">Terrain Disponible</label>
+                <select asp-for="Reservation.TerrainId" class="form-control" asp-items="Model.TerrainOptions"></select>
+                <span asp-validation-for="Reservation.TerrainId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center mt-4">
+                <input type="submit" value="Ajouter" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            flatpickr("#datepicker", {
+                dateFormat: "Y-m-d",
+                disable: async function () {
+                    // Fetch unavailable dates
+                    const response = await fetch('/Reservations/GetUnavailableDates');
+                    const unavailableDates = await response.json();
+                    return unavailableDates.map(date => date.start);
+                },
+                locale: "fr", // Adjust for French locale
+            });
+        });
+    </script>
+}

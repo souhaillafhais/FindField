@@ -1,0 +1,67 @@
+﻿@page
+@model GestionTerrains.Pages.Staffs.ModifierStaffModel
+
+@{
+    ViewData["Title"] = "Modifier un Membre du Personnel";
+}
+<div class="d-flex justify-content-center align-items-center" style="padding-top: 100px; min-height: 100vh;">
+    <div style="width: 500px;">
+        <h1 class="text-center">Modifier le membre</h1>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Staff.Nom" class="control-label"></label>
+                        <input asp-for="Staff.Nom" class="form-control" />
+                        <span asp-validation-for="Staff.Nom" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Staff.Prenom" class="control-label"></label>
+                        <input asp-for="Staff.Prenom" class="form-control" />
+                        <span asp-validation-for="Staff.Prenom" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Staff.Telephone" class="control-label"></label>
+                        <input asp-for="Staff.Telephone" class="form-control" />
+                        <span asp-validation-for="Staff.Telephone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Staff.Role" class="control-label"></label>
+                        <input asp-for="Staff.Role" class="form-control" />
+                        <span asp-validation-for="Staff.Role" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Staff.Email" class="control-label"></label>
+                        <input asp-for="Staff.Email" class="form-control" />
+                        <span asp-validation-for="Staff.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Staff.Password" class="control-label"></label>
+                        <input asp-for="Staff.Password" type="password" class="form-control" />
+                        <span asp-validation-for="Staff.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" value="Enregistrer" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <a asp-page="listeStaff" class="btn btn-info">Retourner à la liste du Personnel</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

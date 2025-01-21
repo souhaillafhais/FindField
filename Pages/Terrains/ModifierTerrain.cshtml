@@ -1,0 +1,56 @@
+﻿@page
+@model GestionTerrains.Pages.Terrains.ModifierTerrainModel
+
+@{
+    ViewData["Title"] = "ModifierTerrain";
+}
+<div class="d-flex justify-content-center align-items-center" style="padding-top: 100px; min-height: 100vh;">
+    <div style="width: 500px;">
+        <h1 class="text-center">Modifier @Model.Terrain.Nom</h1>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Terrain.Id" />
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Terrain.Nom" class="control-label"></label>
+                        <input asp-for="Terrain.Nom" class="form-control" />
+                        <span asp-validation-for="Terrain.Nom" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Terrain.Type" class="control-label"></label>
+                        <input asp-for="Terrain.Type" class="form-control" />
+                        <span asp-validation-for="Terrain.Type" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <span class="text-danger">*</span>
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Terrain.Disponible" /> @Html.DisplayNameFor(model => model.Terrain.Disponible)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <span class="text-danger">*</span>
+                        <label asp-for="Terrain.PrixParHeure" class="control-label"></label>
+                        <input asp-for="Terrain.PrixParHeure" class="form-control" />
+                        <span asp-validation-for="Terrain.PrixParHeure" class="text-danger"></span>
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" value="Enregistrer" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <a asp-page="./ListeTerrain" class="btn btn-info">Retourner à la liste des terrains</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

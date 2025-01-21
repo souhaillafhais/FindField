@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <!-- Liens CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/fonts/icomoon/style.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/bootstrap/bootstrap.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/jquery-ui.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/jquery.fancybox.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/bootstrap-datepicker.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/fonts/flaticon/font/flaticon.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/aos.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+</head>
+
+<style>
+    .gif-container {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        z-index: 1000;
+        width: 100px;
+        height: auto;
+    }
+
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+        }
+</style>
+
+<body>
+    <div class="site-wrap">
+        <header class="site-navbar py-4" role="banner">
+            <div class="container">
+                <div class="d-flex align-items-center">
+                    <div class="site-logo">
+                        <a href="@Url.Page("/Index")">Find<img width="40px" height="40px" src="~/gifs/Animation - 1734385864416.gif" alt="Logo">Field</a>
+                    </div>
+                    <div class="ml-auto">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                                <!-- Bouton Accueil Toujours Visible -->
+                                <li>
+                                    <a href="@Url.Page("/Index")" class="nav-link"><img src="~/images/home.png" alt="Accueil" /></a>
+                                </li>
+
+                                <!-- Vérification de Connexion -->
+                                @if (Context.Session.GetString("UserRole") != null)
+                                {
+                                    <!-- Boutons visibles uniquement pour les utilisateurs connectés -->
+                                    <li class="has-children">
+                                        <a href="@Url.Page("/Terrains/ListeTerrain")" class="nav-link"><img src="~/images/soccer-field-.png" alt="Terrains" /></a>
+                                        <ul class="dropdown">
+                                            <li><a href="@Url.Page("/Terrains/ListeTerrain")" class="nav-link">Liste des Terrains</a></li>
+                                            <li><a href="@Url.Page("/Terrains/AddTerrain")" class="nav-link">Ajouter Terrain</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-children">
+                                        <a href="@Url.Page("/Reservations/ListeReservation")" class="nav-link"><img src="~/images/football.png" alt="Réservations" /></a>
+                                        <ul class="dropdown">
+                                            <li><a href="@Url.Page("/Reservations/ListeReservation")" class="nav-link">Liste des Réservations</a></li>
+                                            <li><a href="@Url.Page("/Reservations/AddReservation")" class="nav-link">Ajouter Réservation</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-children">
+                                        <a href="@Url.Page("/Staffs/listeStaff")" class="nav-link"><img src="~/images/soccer-player.png" alt="Personnel" /></a>
+                                        <ul class="dropdown">
+                                            <li><a href="@Url.Page("/Staffs/listeStaff")" class="nav-link">Liste des Personnels</a></li>
+                                            <li><a href="@Url.Page("/Staffs/AddStaff")" class="nav-link">Ajouter Staff</a></li>
+                                        </ul>
+                                    </li>
+                                    @if (Context.Session.GetString("UserRole") != null)
+                                    {
+                                        
+                                        <a href="/Logout" class="nav-link btn btn-danger">Déconnecter</a>
+                                    }
+                                }
+                                else
+                                {
+                                    <!-- Bouton Connecter pour les Non-Connectés -->
+                                    <li>
+                                        <a href="/Login" class="nav-link btn btn-success">Se Connecter</a>
+                                    </li>
+                                }
+                            </ul>
+                        </nav>
+
+                        <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white">
+                            <span class="icon-menu h3 text-white"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="page-content-wrapper">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="widget mb-3">
+                        <h2>Terrains</h2>
+                        <ul class="list-unstyled links">
+                            <li><a href="@Url.Page("/Terrains/ListeTerrain")">Terrains</a></li>
+                            <li><a href="@Url.Page("/Terrains/AddTerrain")">Ajouter un Terrain</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="widget mb-3">
+                        <h2>Reservation</h2>
+                        <ul class="list-unstyled links">
+                            <li><a href="@Url.Page("/Reservations/ListeReservation")">Reservation</a></li>
+                            <li><a href="@Url.Page("/Reservations/AddReservation")">Ajouter une Reservation</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="widget mb-3">
+                        <h2>Staff</h2>
+                        <ul class="list-unstyled links">
+                            <li><a href="@Url.Page("/Staffs/listeStaff")">Staff</a></li>
+                            <li><a href="@Url.Page("/Staffs/AddStaff")">Ajouter Un Membre du Staff</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Liens JS -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/jquery-3.3.1.min.js" asp-append-version="true"></script>
+    <script src="~/js/jquery-migrate-3.0.1.min.js" asp-append-version="true"></script>
+    <script src="~/js/jquery-ui.js" asp-append-version="true"></script>
+    <script src="~/js/owl.carousel.min.js" asp-append-version="true"></script>
+    <script src="~/js/bootstrap-datepicker.min.js" asp-append-version="true"></script>
+    <script src="~/js/aos.js" asp-append-version="true"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
+
+    <script>
+        document.querySelectorAll('.has-children').forEach(dropdown => {
+            dropdown.addEventListener('mouseenter', () => dropdown.querySelector('.dropdown').classList.add('show'));
+            dropdown.addEventListener('mouseleave', () => dropdown.querySelector('.dropdown').classList.remove('show'));
+        });
+    </script>
+
+
+
+
+
+    @RenderSection("Scripts", required: false)
+
+
+
+</body>
+</html>

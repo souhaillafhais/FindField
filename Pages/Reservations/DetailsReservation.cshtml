@@ -1,0 +1,62 @@
+﻿@page
+@model GestionTerrains.Pages.Reservations.DetailsReservationModel
+
+@{
+    ViewData["Title"] = "Détails de la Réservation";
+}
+<div class="d-flex justify-content-center align-items-center" style="padding-top: 100px; min-height: 100vh;">
+    <div style="width: 600px;">
+        <h1 class="text-center">Réservation de @Model.Reservation.NomClient</h1>
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Reservation.NomClient)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Reservation.NomClient)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Reservation.Telephone)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Reservation.Telephone)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Reservation.Date)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Reservation.Date)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Reservation.HeureDebut)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Reservation.HeureDebut)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Reservation.HeureFin)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Reservation.HeureFin)
+                </dd>
+                <dt class="col-sm-4">
+                    Terrain
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.Reservation.Terrain?.Nom
+                </dd>
+                <dt class="col-sm-4">
+                    Type du Terrain
+                </dt>
+                <dd class="col-sm-8">
+                    @Model.Reservation.Terrain?.Type
+                </dd>
+            </dl>
+        </div>
+        <div class="text-center mt-3">
+            <a asp-page="./ModifierReservation" asp-route-id="@Model.Reservation.Id" class="btn btn-outline-secondary">Modifier</a>
+            <a asp-page="./ListeReservation" class="btn btn-info">Retourner à la liste des Réservations</a>
+        </div>
+    </div>
+</div>

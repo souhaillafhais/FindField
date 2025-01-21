@@ -1,0 +1,67 @@
+﻿@page
+@model GestionTerrains.Pages.Terrains.ListeTerrainModel
+
+@{
+    ViewData["Title"] = "ListeTerrain";
+}
+<div style="padding-top: 100px;">
+    <h1 class="text-center">Tous Les Terrains</h1>
+
+    <div class="text-center mt-3" style="padding-bottom:20px">
+        <a asp-page="./AddTerrain" class="btn btn-success">Ajouter Un Terrain</a>
+    </div>
+
+    <div class="text-center mt-3">
+        <form method="get" asp-page="./ListeTerrain">
+            <div class="form-group d-flex justify-content-center">
+                <input type="text" name="SearchString" value="@Model.CurrentFilter" class="form-control w-25" placeholder="Rechercher par nom..." />
+                <button type="submit" class="btn btn-primary ml-2">Rechercher</button>
+            </div>
+        </form>
+    </div>
+
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Terrain[0].Nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Terrain[0].Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Terrain[0].Disponible)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Terrain[0].PrixParHeure)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Terrain)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        <input type="checkbox" disabled @(item.Disponible ? "checked" : "")
+                               class="@(item.Disponible ? "form-check-input" : "form-check-input bg-danger")" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrixParHeure)
+                    </td>
+                    <td>
+                        <a asp-page="./ModifierTerrain" asp-route-id="@item.Id" class="btn btn-outline-info">Modifier</a> |
+                        <a asp-page="./DetailsTerrain" asp-route-id="@item.Id" class="btn btn-outline-success">Details</a> |
+                        <a asp-page="./SupprimerTerrain" asp-route-id="@item.Id" class="btn btn-outline-danger">Supprimer</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

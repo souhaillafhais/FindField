@@ -1,0 +1,156 @@
+﻿@page
+@model GestionTerrains.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Find Field";
+}
+
+<div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 ml-auto">
+
+
+                <!-- Affichage du Nom et Prénom si connecté -->
+                @if (!string.IsNullOrEmpty(Model.UserName))
+                {
+                    <h3 class="text-white">Bonjour, @Model.UserName !</h3>
+                    <h1 class="text-white">
+                        Bienvenue dans <span style="color:rgb(216,62,62)">FindField</span>.
+                    </h1>
+                    <p>
+                        <a href="@Url.Page("/Terrains/ListeTerrain")" class="btn btn-primary py-3 px-4 mr-3">
+                            Voir la liste des terrains disponibles
+                        </a>
+                    </p>
+
+                }
+                else
+                {
+                    <h1 class="text-white">
+                        Bienvenue dans <span style="color:rgb(216,62,62)">FindField</span>.
+                    </h1>
+                    <p class="text-white">Connectez-vous pour accéder à toutes les fonctionnalités.</p>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+     <div class="site-section">
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-6 title-section">
+                    <h2 class="heading">Videos</h2>
+                </div>
+                <div class="col-6 text-right">
+                    <div class="custom-nav">
+                        <a href="#" class="js-custom-prev-v2"><span class="icon-keyboard_arrow_left"></span></a>
+                        <span></span>
+                        <a href="#" class="js-custom-next-v2"><span class="icon-keyboard_arrow_right"></span></a>
+                    </div>
+                </div>
+            </div>
+
+     
+            <div class="owl-4-slider owl-carousel">
+               
+                <div class="item">
+                    <div class="video-media">
+                        <img src="images/img_1.jpg" alt="Dogba set for Juventus return?" class="img-fluid">
+                        <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
+                            <span class="icon mr-3">
+                                <span class="icon-play"></span>
+                            </span>
+                            <div class="caption">
+                                <h3 class="m-0">Dogba set for Juventus return?</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="item">
+                    <div class="video-media">
+                        <img src="images/img_2.jpg" alt="Kai Nets Double To Secure Comfortable Away Win" class="img-fluid">
+                        <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
+                            <span class="icon mr-3">
+                                <span class="icon-play"></span>
+                            </span>
+                            <div class="caption">
+                                <h3 class="m-0">Kai Nets Double To Secure Comfortable Away Win</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+           
+                <div class="item">
+                    <div class="video-media">
+                        <img src="images/img_3.jpg" alt="Romulo to stay at Real Madrid?" class="img-fluid">
+                        <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
+                            <span class="icon mr-3">
+                                <span class="icon-play"></span>
+                            </span>
+                            <div class="caption">
+                                <h3 class="m-0">Romulo to stay at Real Madrid?</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+         
+                <div class="item">
+                    <div class="video-media">
+                        <img src="images/img_1.jpg" alt="Dogba set for Juventus return?" class="img-fluid">
+                        <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
+                            <span class="icon mr-3">
+                                <span class="icon-play"></span>
+                            </span>
+                            <div class="caption">
+                                <h3 class="m-0">Dogba set for Juventus return?</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="video-media">
+                        <img src="images/img_2.jpg" alt="Kai Nets Double To Secure Comfortable Away Win" class="img-fluid">
+                        <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
+                            <span class="icon mr-3">
+                                <span class="icon-play"></span>
+                            </span>
+                            <div class="caption">
+                                <h3 class="m-0">Kai Nets Double To Secure Comfortable Away Win</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="video-media">
+                        <img src="images/img_3.jpg" alt="Romulo to stay at Real Madrid?" class="img-fluid">
+                        <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center" data-fancybox>
+                            <span class="icon mr-3">
+                                <span class="icon-play"></span>
+                            </span>
+                            <div class="caption">
+                                <h3 class="m-0">Romulo to stay at Real Madrid?</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+

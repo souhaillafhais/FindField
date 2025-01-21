@@ -1,0 +1,42 @@
+﻿@page
+@model GestionTerrains.Pages.Staffs.DetailsStaffModel
+
+@{
+    ViewData["Title"] = "DetailsStaff";
+}
+<div class="d-flex justify-content-center align-items-center" style="padding-top: 100px; min-height: 100vh;">
+    <div style="width: 600px;">
+        <h1 class="text-center">@Model.Staff.Prenom @Model.Staff.Nom</h1>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Staff.Nom)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Staff.Nom)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Staff.Prenom)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Staff.Prenom)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Staff.Telephone)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Staff.Telephone)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Staff.Role)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Staff.Role)
+            </dd>
+        </dl>
+        <div class="text-center mt-3">
+            <a asp-page="./ModifierStaff" asp-route-id="@Model.Staff.Id" class="btn btn-outline-secondary">Modifier</a>
+            <a asp-page="./listeStaff" class="btn btn-info">Retourner à la liste du Personnel</a>
+        </div>
+    </div>
+</div>
